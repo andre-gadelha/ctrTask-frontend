@@ -1,15 +1,25 @@
-function Formulario(){
+function Formulario({botao, eventoDigitar}){
 
     return(
        
         <form>
-            <input type="text" placeholder="Nome" />
-            <input type="text" placeholder="Prioridade" />
+            <input type="text" onChange={eventoDigitar} name="name" placeholder="Nome"       className="form-control"/>
+            <input type="text" onChange={eventoDigitar} name="prioridade" placeholder="Prioridade" className="form-control" />
 
-            <input type="button" value="Cadastrar" />
-            <input type="button" value="Alterar" />
-            <input type="button" value="Remover" />
-            <input type="button" value="Cancelar" />
+            {
+                botao
+                ?
+                <input type="button" value="Cadastrar"  className="btn btn-primary" />
+                :
+                <div>
+                    <input type="button" value="Alterar"    className="btn btn-warning" />
+                    <input type="button" value="Remover"    className="btn btn-danger" />
+                    <input type="button" value="Cancelar"   className="btn btn-secondary" />
+                </div>
+            }
+
+            
+            
         </form>
     )
 }
