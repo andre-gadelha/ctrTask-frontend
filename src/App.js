@@ -39,15 +39,23 @@ function App() {
         'Accept':'application/json'
       }
     })
-    .then(retorno => retorno)
+    .then(retorno => retorno.json())
     .then(retorno_convertido => {
       
-      if (retorno_convertido.ok == true){
-        console.log(retorno_convertido.ok);
-      }else{
-        console.log(retorno_convertido.body)
-      }
+      //Tratamento da resposta conforme a mensagem de retorno
+      //if (retorno_convertido.mensagem == ""){
+      //  console.log(retorno_convertido);
+      //}else{
+        console.log(retorno_convertido);
+        //alert("Registrado com sucesso!");
+        resetFormularioTask();
+      //}
     })
+  }
+
+  //Resetar formulário
+  const resetFormularioTask = () =>{
+    setObjTask(task);
   }
   
   //Retorno
@@ -59,7 +67,7 @@ function App() {
         JSON.stringify(objTask)
         }
         </p>
-      <Formulario botao={btnCadastrar} eventoDigitar={digitar} cadastrar={cadastrar}/>
+      <Formulario botao={btnCadastrar} eventoDigitar={digitar} cadastrar={cadastrar} obj={objTask}/>
       <Tabela arrTasks={tasks}/>
     </div>
   );

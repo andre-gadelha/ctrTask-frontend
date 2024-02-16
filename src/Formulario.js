@@ -1,10 +1,10 @@
-function Formulario({botao, eventoDigitar, cadastrar}){
+function Formulario({botao, eventoDigitar, cadastrar, obj}){
 
     return(
        
         <form>
-            <input type="text" onChange={eventoDigitar} name="name" placeholder="Nome"       className="form-control"/>
-            <input type="text" onChange={eventoDigitar} name="prioridade" placeholder="Prioridade" className="form-control" />
+            <input type="text" value={obj.name} onChange={eventoDigitar} name="name" placeholder="Nome"       className="form-control"/>
+            <input type="text" value={obj.prioridade} onChange={eventoDigitar} name="prioridade" placeholder="Prioridade" className="form-control" />
 
             {
                 botao
@@ -17,9 +17,7 @@ function Formulario({botao, eventoDigitar, cadastrar}){
                     <input type="button" value="Cancelar"   className="btn btn-secondary" />
                 </div>
             }
-
-            
-            
+ 
         </form>
     )
 }
