@@ -28,6 +28,27 @@ function App() {
   const digitar = (e) =>{
     setObjTask({...objTask, [e.target.name]:e.target.value})
   }
+
+  //Cadastrar Task
+  const cadastrar = () =>{
+    fetch("http://localhost:8080/tasks/registerTask", {
+      method:'post',
+      body:JSON.stringify(objTask),
+      headers:{
+        'Content-type':'application/json',
+        'Accept':'application/json'
+      }
+    })
+    .then(retorno => retorno)
+    .then(retorno_convertido => {
+      
+      if (retorno_convertido.ok == true){
+        console.log(retorno_convertido.ok);
+      }else{
+        console.log(retorno_convertido.body)
+      }
+    })
+  }
   
   //Retorno
   return (
@@ -38,7 +59,7 @@ function App() {
         JSON.stringify(objTask)
         }
         </p>
-      <Formulario botao={btnCadastrar} eventoDigitar={digitar}/>
+      <Formulario botao={btnCadastrar} eventoDigitar={digitar} cadastrar={cadastrar}/>
       <Tabela arrTasks={tasks}/>
     </div>
   );
