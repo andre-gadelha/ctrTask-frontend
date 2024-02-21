@@ -7,7 +7,7 @@ import Tabela from './Tabela';
 function App() {
   
   //Declarando o Objeto Task em formato JSON
-  const task = {
+  const modelTask = {
     name: '',
     prioridade: ''
   }
@@ -15,9 +15,9 @@ function App() {
   //UserStates
   const [btnCadastrar, setBtnCadastrar] = useState(true);
   const [tasks, setTasks] = useState([]);
-  const [objTask, setObjTask] = useState(task);
+  const [objTask, setObjTask] = useState(modelTask);
 
-  //UseEffect
+  //UseEffect para carregamento inicial
   useEffect(()=>{
     fetch("http://localhost:8080/tasks")
     .then(retorno => retorno.json())
@@ -31,6 +31,7 @@ function App() {
 
   //Cadastrar Task
   const cadastrar = () =>{
+
     fetch("http://localhost:8080/tasks/registerTask", {
       method:'post',
       body:JSON.stringify(objTask),
@@ -51,11 +52,12 @@ function App() {
         resetFormularioTask();
       //}
     })
+
   }
 
   //Resetar formulário
   const resetFormularioTask = () =>{
-    setObjTask(task);
+    setObjTask(modelTask);
   }
   
   //Retorno
