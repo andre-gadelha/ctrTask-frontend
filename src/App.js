@@ -49,7 +49,8 @@ function App() {
       //}else{
         console.log(retorno_convertido);
         //alert("Registrado com sucesso!");
-        resetFormularioTask();
+        resetFormularioTask();//Reseta formulátio
+        setTasks({...tasks, retorno_convertido})//Setando nova task inserida na lista de Tasks
       //}
     })
 
